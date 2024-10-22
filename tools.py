@@ -69,7 +69,7 @@ class Ledger:
                 return False
         # 트랜잭션 서명 검증
         sender_public_key = load_public_key(transaction.sender_id)
-        if not verify_signature(sender_public_key, transaction):
+        if not verify_signature(sender_public_key, transaction.signature, transaction.current_hash):
             print("오류: 트랜잭션의 서명이 유효하지 않습니다.")
             return False
         # 트랜잭션 추가
@@ -305,13 +305,12 @@ def sign_transaction(private_key, transaction):
     )
     transaction.signature = signature
 
-# 트랜잭션 검증 함수(RSA 키용)
-def verify_signature(public_key, transaction):
-    tx_hash = transaction.current_hash.encode()
+# 서명 검증 함수 정의
+def verify_signature(public_key, signature, current_hash):
     try:
         public_key.verify(
-            transaction.signature,
-            tx_hash,
+            signature,
+            current_hash.encode(),
             padding.PSS(
                 mgf=padding.MGF1(hashes.SHA256()),
                 salt_length=padding.PSS.MAX_LENGTH,
