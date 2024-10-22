@@ -1,3 +1,2 @@
 # blockchain
-
-(./seq_diagram.JPG)
+![seq_diagram](//seq_diagram.JPG)
