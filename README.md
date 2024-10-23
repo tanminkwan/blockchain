@@ -47,7 +47,7 @@ By combining these tools and frameworks, you can develop a robust, cross-platfor
 ---
 
 ### 사용할 기술
-#### Programming Languages : React Native
+#### Programming Languages : React Native For Mobile, Electron For Desktop
 #### P2P Communication : WebRTC
 - peer lookup : DHT (분산 해시 테이블)
 #### Cryptography :
