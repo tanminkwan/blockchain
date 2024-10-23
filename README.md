@@ -45,6 +45,8 @@ To implement the sequence diagram as a program across Windows, macOS, Android, a
 By combining these tools and frameworks, you can develop a robust, cross-platform solution that aligns with your sequence diagram.
 
 ---
+
+### 사용할 기술
 #### Programming Languages : React Native
 #### P2P Communication : WebRTC
 - peer lookup : DHT (분산 해시 테이블)
