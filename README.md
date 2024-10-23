@@ -43,6 +43,7 @@ To implement the sequence diagram as a program across Windows, macOS, Android, a
 4. **Platform-Specific Modules**: Write wrappers around native APIs to handle key storage and OS-specific optimizations.
 
 By combining these tools and frameworks, you can develop a robust, cross-platform solution that aligns with your sequence diagram.
+
 ---
 #### Programming Languages : React Native
 #### P2P Communication : WebRTC
