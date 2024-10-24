@@ -44,14 +44,13 @@ sequenceDiagram
     DHT_Network-->>Offerer: Send Answer SDP와 Offerer의 Public Key
 
     Offerer->>Offerer: 트랜잭션 생성
-    Note right of Offerer: 트랜잭션 생성<br/>대칭키 생성<br/>대칭키로 트랜잭션 암호화<br/>Answerer의 Public Key로 대칭키 암호화
     
     Offerer->>Offerer: Establish WebRTC Connection<br/>Accept Remote Answerer
     Answerer->>Answerer: Establish WebRTC Connection<br/>Accept Remote Offerer
 
     Note over Offerer,Answerer: WebRTC Connection Established
     Offerer->>Offerer: Create Data Channel
-    Offerer->>Answerer: Send 암호화된 대칭키와 트랜잭션 via Data Channel
+    Offerer->>Answerer: Send 트랜잭션 via Data Channel
     Answerer->>Offerer: Send 트랜잭션 수신 결과 via Data Channel
     Answerer->>Answerer: 트랜잭션 처리
     Answerer->>Offerer: Send 트랜잭션 처리 결과 via Data Channel
