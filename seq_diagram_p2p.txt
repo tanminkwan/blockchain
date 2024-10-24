@@ -19,8 +19,8 @@ sequenceDiagram
     Offerer->>Offerer: 트랜잭션 생성
     Note right of Offerer: 대칭키로 트랜잭션 암호화<br/>Answerer의 RSA Public Key로 대칭키 암호화
     
-    Offerer->>Offerer: Establish WebRTC Connection
-    Answerer->>Answerer: Establish WebRTC Connection
+    Offerer->>Offerer: Establish WebRTC Connection<br/>Accept Remote Answerer
+    Answerer->>Answerer: Establish WebRTC Connection<br/>Accept Remote Offerer
 
     Note over Offerer,Answerer: WebRTC Connection Established
     Offerer->>Offerer: Create Data Channel
