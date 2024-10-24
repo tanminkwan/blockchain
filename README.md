@@ -28,21 +28,21 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant Offerer
-    participant DHT_Server
+    participant DHT_Network
     participant Answerer
 
-    Offerer->>DHT_Server: Store Offer SDP and RSA Public Key
-    Note right of DHT_Server: Offer SDP stored
+    Offerer->>DHT_Network: Store Offer SDP and RSA Public Key
+    Note right of DHT_Network: Offer SDP stored
 
-    Answerer->>DHT_Server: Retrieve Offer SDP
-    DHT_Server-->>Answerer: Send Offer SDP and RSA Public Key
+    Answerer->>DHT_Network: Retrieve Offer SDP
+    DHT_Network-->>Answerer: Send Offer SDP and RSA Public Key
 
     Answerer->>Answerer: Create Answer SDP
-    Answerer->>DHT_Server: Store Answer SDP와 Answerer의 RSA Public Key
-    Note right of DHT_Server: Answer SDP stored
+    Answerer->>DHT_Network: Store Answer SDP와 Answerer의 RSA Public Key
+    Note right of DHT_Network: Answer SDP stored
 
-    Offerer->>DHT_Server: Retrieve Answer SDP
-    DHT_Server-->>Offerer: Send Answer SDP와 Offerer의 RSA Public Key
+    Offerer->>DHT_Network: Retrieve Answer SDP
+    DHT_Network-->>Offerer: Send Answer SDP와 Offerer의 RSA Public Key
 
     Offerer->>Offerer: 트랜잭션 생성
     Note right of Offerer: 대칭키로 트랜잭션 암호화<br/>Answerer의 RSA Public Key로 대칭키 암호화
