@@ -5,21 +5,21 @@ sequenceDiagram
     participant 수신자
     participant Ledger
     Note over 송신자,수신자: 과거의 어느 시점
-    수신자->>송신자: 수신자의 RSA 공개키 전송 (안전한 방식으로)
-    송신자->>수신자: 송신자의 RSA 공개키 전송 (안전한 방식으로)
+    수신자->>송신자: 수신자의 공개키 전송 (안전한 방식으로)
+    송신자->>수신자: 송신자의 공개키 전송 (안전한 방식으로)
     수신자->>수신자: 비밀번호와 솔트 입력하여 암호화 키 생성
     Ledger->>수신자: 암호화 키로 원장 로드 (또는 초기화)
     Note over 송신자,수신자: 거래 시작
-    송신자->>송신자: RSA 키 페어 로드    
+    송신자->>송신자: 공개키,비밀키 페어 로드    
     송신자->>송신자: 트랜잭션 생성
-    송신자->>송신자: 트랜잭션에 자신의 RSA 비밀키로 서명
+    송신자->>송신자: 트랜잭션에 자신의 비밀키로 서명
     송신자->>송신자: 대칭키 생성 (일회용)
     송신자->>송신자: 트랜잭션 데이터 대칭키로 암호화
-    송신자->>송신자: 대칭키를 수신자의 RSA 공개키로 암호화
+    송신자->>송신자: 대칭키를 수신자의 공개키로 암호화
     송신자->>수신자: 암호화된 대칭키와 트랜잭션 데이터 전송
-    수신자->>수신자: 암호화된 대칭키를 자신의 RSA 비밀키로 복호화
+    수신자->>수신자: 암호화된 대칭키를 자신의 비밀키로 복호화
     수신자->>수신자: 대칭키로 트랜잭션 데이터 복호화
-    수신자->>수신자: 송신자의 RSA 공개키로 트랜잭션 서명 검증
+    수신자->>수신자: 송신자의 공개키로 트랜잭션 서명 검증
     수신자->>수신자: 원장의 마지막 트랜잭션과 현재의 트랜잭션을 체이닝<br/>(이전 트랜잭션의 hash값과 현재 트랜잭션의 중요정보를 합쳐서 hash를 생성)
     수신자->>Ledger: 트랜잭션을 원장에 추가
     Note over 송신자,수신자: 거래 종료
@@ -31,21 +31,21 @@ sequenceDiagram
     participant DHT_Network
     participant Answerer
 
-    Offerer->>DHT_Network: Store Offer SDP and RSA Public Key
+    Offerer->>DHT_Network: Store Offer SDP and Public Key
     Note right of DHT_Network: Offer SDP stored
 
     Answerer->>DHT_Network: Retrieve Offer SDP
-    DHT_Network-->>Answerer: Send Offer SDP and RSA Public Key
+    DHT_Network-->>Answerer: Send Offer SDP and Public Key
 
     Answerer->>Answerer: Create Answer SDP
-    Answerer->>DHT_Network: Store Answer SDP와 Answerer의 RSA Public Key
+    Answerer->>DHT_Network: Store Answer SDP와 Answerer의 Public Key
     Note right of DHT_Network: Answer SDP stored
 
     Offerer->>DHT_Network: Retrieve Answer SDP
-    DHT_Network-->>Offerer: Send Answer SDP와 Offerer의 RSA Public Key
+    DHT_Network-->>Offerer: Send Answer SDP와 Offerer의 Public Key
 
     Offerer->>Offerer: 트랜잭션 생성
-    Note right of Offerer: 대칭키로 트랜잭션 암호화<br/>Answerer의 RSA Public Key로 대칭키 암호화
+    Note right of Offerer: 트랜잭션 생성<br/>대칭키 생성<br/>대칭키로 트랜잭션 암호화<br/>Answerer의 Public Key로 대칭키 암호화
     
     Offerer->>Offerer: Establish WebRTC Connection<br/>Accept Remote Answerer
     Answerer->>Answerer: Establish WebRTC Connection<br/>Accept Remote Offerer
