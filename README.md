@@ -107,7 +107,7 @@ WebRTC와 DHT의 조합은 전혀 이상하지 않으며, 오히려 **상호 보
 
 결론적으로, **WebRTC와 DHT의 조합은 매우 유용하고 실용적인 솔루션**이 될 수 있습니다. DHT는 피어 검색과 네트워크 탈중앙화를 담당하고, WebRTC는 실시간 데이터 전송과 NAT 방화벽 문제 해결을 담당함으로써, 두 기술이 상호 보완적으로 동작할 수 있습니다. 이러한 조합은 완전한 P2P 네트워크 구축을 목표로 하는 여러 프로젝트에서 강력한 기반이 될 수 있습니다.
 
-```
+```mermaid
 sequenceDiagram
     participant Offerer
     participant DHT_Server
