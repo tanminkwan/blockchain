@@ -24,24 +24,24 @@ sequenceDiagram
     수신자->>Ledger: 트랜잭션을 원장에 추가
     Note over 송신자,수신자: 거래 종료
 ```
-# 탈중앙화 네트워크 설계(Decentrolized Network Design)
+# 탈중앙화 네트워크 설계(Decentralized Network Design)
 ```mermaid
 sequenceDiagram
     participant Offerer
     participant DHT_Server
     participant Answerer
 
-    Offerer->>DHT_Server: Store Offer SDP and RSA Public Key (Key: "webrtc-offer")
+    Offerer->>DHT_Server: Store Offer SDP and RSA Public Key
     Note right of DHT_Server: Offer SDP stored
 
-    Answerer->>DHT_Server: Retrieve Offer SDP (Key: "webrtc-offer")
+    Answerer->>DHT_Server: Retrieve Offer SDP
     DHT_Server-->>Answerer: Send Offer SDP and RSA Public Key
 
     Answerer->>Answerer: Create Answer SDP
-    Answerer->>DHT_Server: Store Answer SDP와 Answerer의 RSA Public Key (Key: "webrtc-answer")
+    Answerer->>DHT_Server: Store Answer SDP와 Answerer의 RSA Public Key
     Note right of DHT_Server: Answer SDP stored
 
-    Offerer->>DHT_Server: Retrieve Answer SDP (Key: "webrtc-answer")
+    Offerer->>DHT_Server: Retrieve Answer SDP
     DHT_Server-->>Offerer: Send Answer SDP와 Offerer의 RSA Public Key
 
     Offerer->>Offerer: 트랜잭션 생성
