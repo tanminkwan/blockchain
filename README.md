@@ -106,3 +106,38 @@ WebRTC와 DHT의 조합은 전혀 이상하지 않으며, 오히려 **상호 보
    - **DHT의 안정성**: 네트워크에 악의적인 피어가 있다면 잘못된 정보를 전송할 수 있습니다. **신뢰 기반의 DHT 프로토콜**을 사용하거나, 데이터를 추가적으로 검증하는 메커니즘을 도입하여 안정성을 높일 수 있습니다.
 
 결론적으로, **WebRTC와 DHT의 조합은 매우 유용하고 실용적인 솔루션**이 될 수 있습니다. DHT는 피어 검색과 네트워크 탈중앙화를 담당하고, WebRTC는 실시간 데이터 전송과 NAT 방화벽 문제 해결을 담당함으로써, 두 기술이 상호 보완적으로 동작할 수 있습니다. 이러한 조합은 완전한 P2P 네트워크 구축을 목표로 하는 여러 프로젝트에서 강력한 기반이 될 수 있습니다.
+
+```
+sequenceDiagram
+    participant Offerer
+    participant DHT_Server
+    participant Answerer
+
+    Offerer->>DHT_Server: Store Offer SDP and RSA Public Key (Key: "webrtc-offer")
+    Note right of DHT_Server: Offer SDP stored
+
+    Answerer->>DHT_Server: Retrieve Offer SDP (Key: "webrtc-offer")
+    DHT_Server-->>Answerer: Send Offer SDP and RSA Public Key
+
+    Answerer->>Answerer: Create Answer SDP
+    Answerer->>DHT_Server: Store Answer SDP와 Answerer의 RSA Public Key (Key: "webrtc-answer")
+    Note right of DHT_Server: Answer SDP stored
+
+    Offerer->>DHT_Server: Retrieve Answer SDP (Key: "webrtc-answer")
+    DHT_Server-->>Offerer: Send Answer SDP와 Offerer의 RSA Public Key
+
+    Offerer->>Offerer: 트랜잭션 생성
+    Note right of Offerer: 대칭키로 트랜잭션 암호화<br/>Answerer의 RSA Public Key로 대칭키 암호화
+    
+    Offerer->>Offerer: Establish WebRTC Connection
+    Answerer->>Answerer: Establish WebRTC Connection
+
+    Note over Offerer,Answerer: WebRTC Connection Established
+    Offerer->>Offerer: Create Data Channel
+    Offerer->>Answerer: Send 암호화된 대칭키와 트랜잭션 via Data Channel
+    Answerer->>Offerer: Send 트랜잭션 수신 결과 via Data Channel
+    Answerer->>Answerer: 트랜잭션 처리
+    Answerer->>Offerer: Send 트랜잭션 처리 결과 via Data Channel
+
+    Note over Offerer,Answerer: WebRTC Connection Terminated
+```
