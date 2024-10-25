@@ -115,7 +115,7 @@ WebRTC connection closed and DHT client stopped.
 
 ### **A. Ledger 파일 확인**
 
-다른 터미널 창을 열고, `send_transaction.py` 스크립트를 실행하여 Offer SDP를 DHT에 저장하고 Answer SDP를 기다립니다. 
+다른 터미널 창을 열고, `view_transactions.py` 스크립트를 실행하여 Ledger 파일에 저장된 모든 정보가 조회됩니다. 여기에 방금 수신자가 처리한 트랜잭션이 마지막에 나타나는 지 확인합니다.
 
 ```bash
 python view_transactions.py
