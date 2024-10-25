@@ -1,3 +1,4 @@
+# receive_transaction.py
 import json
 from tools import derive_key_from_password, Ledger, load_private_key, decrypt_symmetric_key\
     , decrypt_transaction_data, load_public_key, Transaction, verify_signature
