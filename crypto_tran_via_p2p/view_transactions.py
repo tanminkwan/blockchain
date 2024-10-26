@@ -1,3 +1,5 @@
+# view_transactions.py
+
 from tools import derive_key_from_password, Ledger
 
 # 사용자 정보
