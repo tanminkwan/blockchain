@@ -54,7 +54,7 @@ source webrtc-dht-env/bin/activate  # Windows의 경우: webrtc-dht-env\Scripts\
 `pip`을 사용하여 필요한 Python 패키지를 설치합니다:
 
 ```bash
-pip install kademlia aiortc asyncio
+pip install kademlia aiortc
 ```
 
 *참고: `asyncio`는 Python 3.7 이상에서 표준 라이브러리에 포함되어 있습니다.*

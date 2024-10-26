@@ -166,9 +166,12 @@ sequenceDiagram
 - 트랜잭션 처리 및 원장 관리 실습
 
   [./crypto_tran/how_to_run.md](./crypto_tran/how_to_run.md)
+- WebRTC 통신 실습
+
+  [./p2p/how_to_run.md](./p2p/how_to_run_filetype.md)
 - DHT + WebRTC Network 환경에서 통신 실습
 
-  [./p2p/how_to_run.md](./p2p/how_to_run.md)
+  [./p2p/how_to_run.md](./p2p/how_to_run_dhttype.md)
 - DHT + WebRTC Network 환경에서 트랜잭션 처리 및 원장 관리 실습
 
   [./crypto_tran_via_p2p/how_to_run.md](./crypto_tran_via_p2p/how_to_run.md)

@@ -1,5 +1,6 @@
+# offerer_filetype.py
 import asyncio
-from aiortc import RTCPeerConnection, RTCSessionDescription, RTCDataChannel
+from aiortc import RTCPeerConnection, RTCSessionDescription
 
 async def run_offer():
     # Create peer connection

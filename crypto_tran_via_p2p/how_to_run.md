@@ -2,7 +2,7 @@
 
 터미널에서 다음 명령어를 실행하여 필요한 패키지를 설치합니다:
 ```bash
-pip install aiortc kademlia cryptography
+pip install aiortc kademlia cryptography argparse asyncio
 ```
 
 ---
